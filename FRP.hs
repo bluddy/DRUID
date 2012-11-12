@@ -5,7 +5,7 @@ module Main where
 import qualified Graphics.UI.WX as WX hiding ((:=))
 import Graphics.UI.WX( Prop( (:=) ) )
 
-import System.Clock
+{-import System.Clock-}
 import Data.IORef
 
 import Data.Maybe
@@ -327,7 +327,8 @@ handleCommand w beh = do
 
 step :: BIO () -> UIEvent -> IO (BIO ())
 step (Behavior b) e = do
-  TimeSpec x y <- getTime Realtime
+  {-TimeSpec x y <- getTime Realtime-}
+  let x = 0   -- for now
   let (b', io) = b ((fromIntegral x), Just e)
   io
   return b'
